@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import CreateView, TemplateView
 
 from carrinho.carrinho import Carrinho
 from pedidos.forms import PedidoModelForm
 from .models import ItemPedido, Pedido
+from .utils import GeraPdfMixin
 
 
 class PedidoCreateView(CreateView):
@@ -32,3 +34,11 @@ class ResumoPedidoTemplateView(TemplateView):
         ctx = super().get_context_data(**kwargs)
         ctx['pedido'] = Pedido.objects.get(id=self.kwargs['idpedido'])
         return ctx
+
+class ResumoPedidoPdf(View, GeraPdfMixin):
+
+    def get(self, request):
+        pedido = Pedido.objects.get(id=self.kwargs['idpedido'])
+        ctx = self.context_data()
+        ctx['pedido'] = pedido
+        return self.render_to_pdf('resumopedido.html', ctx)
