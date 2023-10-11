@@ -37,8 +37,7 @@ class ResumoPedidoTemplateView(TemplateView):
 
 class ResumoPedidoPdf(View, GeraPdfMixin):
 
-    def get(self, request):
-        pedido = Pedido.objects.get(id=self.kwargs['idpedido'])
-        ctx = self.context_data()
-        ctx['pedido'] = pedido
-        return self.render_to_pdf('resumopedido.html', ctx)
+    def get(self, request, idpedido):
+        pedido = Pedido.objects.get(id=idpedido)
+        ctx = {'pedido':pedido}
+        return self.render_to_pdf('resumopedidopdf.html', ctx)
