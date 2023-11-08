@@ -1,4 +1,6 @@
 from django.views.generic import ListView, DetailView, TemplateView
+from django.utils import translation
+from django.utils.translation import gettext as _
 
 from loja.models import Categoria, Produto
 from carrinho.forms import CarrinhoAddProdutoForm
@@ -10,6 +12,8 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         cont = super().get_context_data(**kwargs)
         cont['categorias'] = Categoria.objects.all()
+        idioma = translation.get_language()
+        cont['idioma'] = idioma
         return cont
 
 

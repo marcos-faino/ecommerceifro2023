@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+import django.middleware.locale
 import environ
 env = environ.Env()
 environ.Env.read_env()
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # Detecta automaticamente linguagem
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -146,3 +148,8 @@ CARRINHO_SESSION_ID = 'car'
 BRAINTREE_MERCHANT_ID = env('BRAINTREE_MERCHANT_ID')
 BRAINTREE_PUBLIC_KEY = env('BRAINTREE_PUBLIC_KEY')
 BRAINTREE_PRIVATE_KEY = env('BRAINTREE_PRIVATE_KEY')
+
+
+LOCALE_PATHS = (
+    BASE_DIR / 'locale',
+)

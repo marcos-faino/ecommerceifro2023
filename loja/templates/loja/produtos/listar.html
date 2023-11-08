@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block conteudo %}
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -23,7 +24,7 @@
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
                                     <a class="btn btn-outline-dark mt-auto" href="{% url 'detalheprod' p.id p.slug %}">
-                                        Ver mais...
+                                        {% trans 'Ver mais' %}...
                                     </a>
                                 </div>
                             </div>

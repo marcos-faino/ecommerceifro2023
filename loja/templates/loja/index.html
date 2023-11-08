@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block header %}
     {% include 'includes/header.html' %}
@@ -15,7 +16,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h3 class="fw-bolder">Loja Virtual Ifro</h3>
+                                    <h3 class="fw-bolder">{% trans 'Loja Virtual Ifro' %}</h3>
                                 </div>
                             </div>
                         </div>

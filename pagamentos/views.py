@@ -1,6 +1,9 @@
 from django.shortcuts import render, reverse
 from django.urls import reverse_lazy
 
+from django.utils import translation
+from django.utils.translation import gettext as _
+
 from ecommerce import settings
 from pagamentos.forms import CheckoutForm
 from pedidos.models import Pedido
@@ -43,7 +46,7 @@ class ProcessarPagamento(FormView):
         if result.is_success:
             context = self.get_context_data()
             context['form'] = self.get_form(self.get_form_class())
-            context['braintree_error'] = 'Pagamento não processado. Favor verificar os dados.'
+            context['braintree_error'] = _('Pagamento não processado. Favor verificar os dados.')
             # return self.render_to_response(context)
         return super().form_valid(form)
     """
