@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'carrinho',
     'pedidos',
     'pagamentos',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +147,7 @@ CARRINHO_SESSION_ID = 'car'
 BRAINTREE_MERCHANT_ID = env('BRAINTREE_MERCHANT_ID')
 BRAINTREE_PUBLIC_KEY = env('BRAINTREE_PUBLIC_KEY')
 BRAINTREE_PRIVATE_KEY = env('BRAINTREE_PRIVATE_KEY')
+
+
+LOGIN_URL = 'loginuser'
+LOGOUT_REDIRECT_URL = 'home'

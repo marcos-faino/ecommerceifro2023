@@ -5,6 +5,7 @@ class ProdDisponiveisManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(disponivel=True)
 
+
 class Categoria(models.Model):
     nome = models.CharField(max_length=150, db_index=True)
     slug = models.SlugField(max_length=150, unique=True)
@@ -33,7 +34,7 @@ class Produto(models.Model):
 
     class Meta:
         ordering = ('nome',)
-        index_together = (('id','slug'),)
+        index_together = (('id', 'slug'),)
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
 

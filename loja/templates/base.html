@@ -47,6 +47,14 @@
                             </span>
                         </button>
                     </form>
+                    {% if user.is_anonymous %}
+                        &nbsp;&nbsp;<a href="{% url 'cadusuario' %}" class="btn btn-mt btn-primary">Cadastro</a>
+                        &nbsp;&nbsp;<a href="{% url 'loginuser' %}" class="btn btn-mt btn-success">Login</a>
+                    {% else %}
+                        &nbsp;&nbsp;
+                        <span>{{ user.get_full_name }}</span>
+                        <a href="{% url 'logoutuser' %}" class="btn btn-mt btn-primary">Sair</a>
+                    {% endif %}
                 </div>
             </div>
         </nav>

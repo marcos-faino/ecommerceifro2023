@@ -10,7 +10,7 @@
                                 <div>
                                     <form method="post">
                                         {% csrf_token %}
-                                        {% bootstrap_form form %}
+                                        <input type="hidden" name="cliente" value="{{ cliente.id }}">
                                         {% buttons %}
                                         <input type="submit" class="btn btn-primary" value="Finalizar Pedido">
                                         {% endbuttons %}

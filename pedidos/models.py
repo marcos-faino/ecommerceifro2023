@@ -1,14 +1,10 @@
 from django.db import models
 from loja.models import Produto
+from usuarios.models import MeuUser
 
 
 class Pedido(models.Model):
-    nome = models.CharField(max_length=50)
-    sobrenome= models.CharField(max_length=50)
-    email = models.EmailField()
-    endereco = models.CharField(max_length=250)
-    cep = models.CharField(max_length=10)
-    cidade = models.CharField(max_length=100)
+    cliente = models.ForeignKey(MeuUser, on_delete=models.SET_NULL, null=True, blank=True)
     criado = models.DateTimeField(auto_now_add=True)
     atualizado = models.DateTimeField(auto_now=True)
     pago = models.BooleanField(default=False)

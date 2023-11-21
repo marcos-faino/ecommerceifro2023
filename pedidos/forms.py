@@ -6,5 +6,6 @@ class PedidoModelForm(forms.ModelForm):
 
     class Meta:
         model = Pedido
-        fields = ['nome', 'sobrenome', 'email', 'endereco', 'cep', 'cidade']
+        fields = ['cliente']
+        raw_id_fields = ('cliente',)
 

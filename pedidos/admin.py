@@ -9,6 +9,7 @@ class ItemPedidoInLine(admin.TabularInline):
     model = ItemPedido
     raw_id_fields = ['produto']
 
+
 def exportar_para_csv(modeladmin, request, queryset):
     opt = modeladmin.model._meta
     conteudo_disp = f'attachment; filename={opt.verbose_name_plural}.csv'
@@ -31,11 +32,13 @@ def exportar_para_csv(modeladmin, request, queryset):
         writer.writerow(data_row)
     return resposta
 
+
 exportar_para_csv.short_description = 'Exportar para CSV'
+
 
 @admin.register(Pedido)
 class PedidoAdmin(admin.ModelAdmin):
-    list_display = ['id', 'nome', 'sobrenome', 'email', 'pago', 'criado', 'atualizado']
+    list_display = ['id', 'cliente', 'pago', 'criado', 'atualizado']
     list_filter = ['pago', 'criado', 'atualizado']
     inlines = [ItemPedidoInLine]
     actions = [exportar_para_csv]

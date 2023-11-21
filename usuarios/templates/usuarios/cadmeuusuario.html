@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block titulo %} Continuando o cadastro do usuário {{ usuario.get_full_name  }}{% endblock %}
+
+{% block conteudo %}
+<section data-bs-version="5.1" class="features16 cid-tzVjbxlXj9" id="features17-6">
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-8">
+                    <div class="text-wrapper">
+                        <h6 class="card-title mbr-fonts-style display-5">
+                            <strong>Cadastro de Usuário</strong>
+                        </h6>
+                        <form class="form form-vertical" action="" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label class="form-label" for="email">E-mail</label>
+                                <input type="email" id="email" name="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="endereco">Endereco</label>
+                                <input type="text" id="endereco" name="endereco" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="cep">CEP</label>
+                                <input type="text" id="cep" name="cep" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="cidade">Cidade</label>
+                                <input type="text" id="cidade" name="cidade" class="form-control">
+                            </div>
+                            <div>
+                                <input class="btn btn-primary" type="submit" value="Enviar">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
